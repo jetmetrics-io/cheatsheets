@@ -1,7 +1,8 @@
 (function () {
-  // Cheatsheet content (data.json, thumbnails) lives in the cheatsheets-library
-  // repo — this public landing reads the same public asset, no duplication.
-  var DATA_BASE = "https://jetmetrics-io.github.io/cheatsheets-library/";
+  // Cheatsheet content (data.json, thumbnails) lives in the hub-cheatsheets
+  // repo (gated library) — this public landing reads the same public asset,
+  // no duplication.
+  var DATA_BASE = "https://jetmetrics-io.github.io/hub-cheatsheets/";
   var IS_LOCAL = location.hostname === "localhost" || location.hostname === "127.0.0.1";
   var SELF_BASE = IS_LOCAL ? "" : "https://jetmetrics-io.github.io/cheatsheets/";
   var SIGNUP_URL = "https://джетметрикс.рф/members/signup";
