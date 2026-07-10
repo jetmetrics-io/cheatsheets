@@ -69,7 +69,7 @@
 
       ctaVariants = [
         { icon: "🔓", title: "Откройте все " + total + " " + sheetWord, sub: "Бесплатно, сразу после регистрации" },
-        { icon: "📥", title: "Скачивайте в PDF", sub: "Сохраняйте и используйте офлайн" },
+        { icon: "📥", title: "Скачивайте в PDF", sub: "Сохраняйте, распечатывайте, используйте офлайн" },
       ];
       if (stats && stats.label_ru) {
         ctaVariants.push({

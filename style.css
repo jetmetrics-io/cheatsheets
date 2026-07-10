@@ -91,7 +91,6 @@
 .jm-csl-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   font-family: var(--jm-font-mono);
   font-size: 0.75rem;
   font-weight: var(--jm-w-semibold);
@@ -99,12 +98,6 @@
   letter-spacing: 0.08em;
   color: var(--jm-green);
   margin-bottom: var(--jm-space-4);
-}
-
-.jm-csl-eyebrow .line {
-  width: 24px;
-  height: 1.5px;
-  background: currentColor;
 }
 
 .jm-csl-hero-title {
@@ -396,21 +389,26 @@
   line-height: 1.4;
 }
 
-.jm-csl-card-cta-secondary {
+/* Colors on these two <a> need !important: Tilda paints every unstyled link
+   inside an embed with its own default orange, and its rule outranks a plain
+   class selector. */
+.jm-csl-card-cta-secondary,
+.jm-csl-card-cta-secondary:visited {
   position: relative;
   z-index: 2;
   font-size: 11px;
   font-weight: var(--jm-w-semibold);
-  color: var(--jm-blue-press);
+  color: var(--jm-blue-press) !important;
   text-decoration: underline !important;
   text-underline-offset: 2px;
 }
 
-.jm-csl-card-cta-action {
+.jm-csl-card-cta-action,
+.jm-csl-card-cta-action:visited {
   position: relative;
   font-size: var(--jm-body-s);
   font-weight: var(--jm-w-bold);
-  color: var(--jm-green-deep);
+  color: var(--jm-green-deep) !important;
   text-decoration: none !important;
   margin-top: 2px;
 }
