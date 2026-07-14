@@ -5,7 +5,7 @@
   var DATA_BASE = "https://jetmetrics-io.github.io/hub-cheatsheets/";
   var IS_LOCAL = location.hostname === "localhost" || location.hostname === "127.0.0.1";
   var SELF_BASE = IS_LOCAL ? "" : "https://jetmetrics-io.github.io/cheatsheets/";
-  var SIGNUP_URL = "https://джетметрикс.рф/members/signup";
+  var SIGNUP_URL = "https://джетметрикс.рф/signup";
 
   var state = {
     items: [],
