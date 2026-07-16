@@ -1,6 +1,6 @@
 import re
 
-ASSET_BASE = "https://jetmetrics-io.github.io/cheatsheets/"
+ASSET_BASE = "https://jetmetrics-static.storage.yandexcloud.net/cheatsheets/"
 
 with open("index.html", encoding="utf-8") as f:
     html = f.read()
