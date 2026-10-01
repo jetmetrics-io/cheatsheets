@@ -37,6 +37,32 @@
     return many;
   }
 
+  // Same "new" rule as the gated library (hub-cheatsheets): a cheatsheet is new
+  // for NEW_DAYS days after published_at (YYYY-MM-DD). The badge expires by itself.
+  var NEW_DAYS = 30;
+
+  function isNew(item) {
+    if (!item.published_at) return false;
+    var p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(item.published_at);
+    if (!p) return false;
+    var then = Date.UTC(+p[1], +p[2] - 1, +p[3]);
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.floor((today - then) / 86400000);
+    return days >= 0 && days < NEW_DAYS;
+  }
+
+  // Grid goes by public number, highest first, so the latest batch is always
+  // on top. The number comes from the "№N — …" title; items without one go last.
+  function publicNum(item) {
+    var m = /^№(\d+)/.exec(item.title || "");
+    return m ? +m[1] : -1;
+  }
+
+  function sortByNumberDesc(items) {
+    return items.slice().sort(function (a, b) { return publicNum(b) - publicNum(a); });
+  }
+
   var dataPromise = fetch(DATA_BASE + "data.json").then(function (r) { return r.json(); });
 
   // Telegram subscriber count — refreshed daily by a GitHub Action that
@@ -50,7 +76,7 @@
       var data = results[0];
       var stats = results[1];
 
-      state.items = data.items;
+      state.items = sortByNumberDesc(data.items);
       state.tagLabels = data.tags;
 
       var total = state.items.length;
@@ -228,6 +254,14 @@
       var title = document.createElement("div");
       title.className = "jm-csl-card-title";
       renderTitle(title, item.title);
+      if (isNew(item)) {
+        // Badge goes before the number, not on the thumbnail — the sheet's own
+        // heading runs full-width across the top, a pill there would cover it.
+        var badge = document.createElement("span");
+        badge.className = "jm-csl-card-new";
+        badge.textContent = "Новое";
+        title.insertBefore(badge, title.firstChild);
+      }
       body.appendChild(title);
 
       if (item.seo_description) {

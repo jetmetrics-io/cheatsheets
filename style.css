@@ -451,6 +451,21 @@
   color: var(--jm-green);
 }
 
+.jm-csl-card-new {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 8px;
+  border-radius: var(--jm-r-pill);
+  background: var(--jm-green);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: var(--jm-w-bold);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
 .jm-csl-card-desc {
   font-size: var(--jm-body-s);
   color: var(--jm-muted);
